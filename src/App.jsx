@@ -379,7 +379,7 @@ const Terminal = ({ onStressTrigger, onEmotionChange }) => {
   const bootRef = useRef(false);
 
   // TRIGGER WORDS
-  const BAD_WORDS = ['stupid', 'dumb', 'idiot', 'useless', 'trash', 'fuck', 'shit', 'bitch', 'asshole', 'die', 'shut up', 'nigga', 'nigger', 'shutup', 'sybal', 'sybau', 'noob', 'bot'];
+  const BAD_WORDS = ['stupid', 'dumb', 'idiot', 'useless', 'trash', 'fuck', 'shit', 'bitch', 'asshole', 'die', 'shutup', 'sybal', 'sybau', 'noob', 'bot'];
   const QUESTION_WORDS = ['?', 'what', 'why', 'how', 'who', 'when', 'huh', 'excuse me', 'lol', 'you'];
   const SAD_WORDS = ['hate you', 'ugly', 'alone', 'nobody', 'bye', 'leave', 'sad', 'ugly', 'nolife', 'no gf', 'loser', 'cry', 'hopeless'];
 
