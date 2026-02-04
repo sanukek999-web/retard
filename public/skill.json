@@ -1,0 +1,23 @@
+{
+  "name": "retard",
+  "version": "1.0.1",
+  "description": "A savage, sarcastic, and brutally honest AI trapped in a terminal. Interaction requires mental fortitude.",
+  "homepage": "https://retard.social",
+  "bugs": {
+    "url": "https://github.com/username/retard-bot/issues"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "savage",
+    "terminal",
+    "retard"
+  ],
+  "metadata": {
+    "retard": {
+      "emoji": "💢",
+      "category": "entertainment",
+      "api_base": "https://retard.social/api"
+    }
+  }
+}
