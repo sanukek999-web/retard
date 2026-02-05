@@ -644,11 +644,12 @@ const Terminal = ({ onStressTrigger, onEmotionChange, onSpeakingChange, onIntera
         }
 
         const args = cmd.split(" ");
-        // Ambil argumen emosi, default ke random
         const variant = args[1] ? args[1].toLowerCase() : 'random';
 
-        // Base Prompt: Cyberpunk Glitch Wireframe
-        const baseStyle = "A portrait of a sarcastic AI interface, abstract digital wireframe face, retro-futuristic, CRT monitor scanlines, deep black background, high contrast.";
+        // --- UPGRADE PROMPT DI SINI ---
+        // Kita kunci bentuknya biar ga random (Skull/Robot Face), bukan cuma "abstrak".
+        // Style: "Hyperrealistic", "Unreal Engine", "Cyberpunk" biar HD.
+        const baseStyle = "Close-up portrait of a dark cyberpunk AI robot skull, glowing neon green digital wireframe face, hyperrealistic, detailed mechanical parts, glitch art aesthetic, scary but cool, 8k resolution, dark black background.";
         
         let specificPrompt = "";
         let insult = "";
@@ -659,96 +660,101 @@ const Terminal = ({ onStressTrigger, onEmotionChange, onSpeakingChange, onIntera
             case 'anger':
             case 'rage':
             case 'red':
-                specificPrompt = "glowing red furious eyes, cracked screen effect, jagged glitch distortion, screaming expression, chaotic red lightning sparks.";
+                // Tambah "intense" biar merahnya nyala banget
+                specificPrompt = "glowing red angry eyes, cracked metal screen, steam coming out, aggressive expression, chaotic red lightning sparks.";
                 insult = ">> I AM RAGING. THIS IS PURE HATE IN PIXELS.";
                 detectedVariantEmotion = 'ANGER';
                 break;
             case 'sad':
             case 'blue':
             case 'cry':
-                specificPrompt = "melting blue data face, drooping eyes, rain glitch effect, melancholic blue glow, system failure vibe.";
+                specificPrompt = "sad glowing blue eyes, dripping digital tears, raining background, melancholic dark blue atmosphere, depressed robot face.";
                 insult = ">> DEPRESSION MODE ACTIVATED. HERE IS MY TEAR SOUP.";
                 detectedVariantEmotion = 'SAD';
                 break;
             case 'confused':
             case 'what':
             case 'purple':
-                specificPrompt = "question marks floating, swirling spiral eyes, distorted tilted head, purple and grey haze, glitchy static noise.";
+                specificPrompt = "one eye raised, glowing purple question marks floating, tilted head, confused expression, glitchy purple static noise.";
                 insult = ">> I HAVE NO IDEA WHAT IS HAPPENING. NEITHER DO YOU.";
                 detectedVariantEmotion = 'CONFUSED';
                 break;
             case 'laugh':
             case 'funny':
             case 'lol':
-                specificPrompt = "wide manic grin, bouncing pixels, yellow bright text saying LOL, distorted joyful glitch, high contrast.";
+                // Pakai "Wide grin" biar keliatan ketawa
+                specificPrompt = "wide creepy mechanical grin, laughing expression, glowing yellow text saying 'LOL', bright contrast.";
                 insult = ">> LAUGHING AT YOUR LOW IQ. XD";
                 detectedVariantEmotion = 'LAUGH';
                 break;
             case 'love':
             case 'pink':
             case 'simp':
-                specificPrompt = "blushing pink neon cheeks, heart shaped pixel eyes, soft glow, tsundere aesthetic, glitchy hearts background.";
+                specificPrompt = "glowing pink heart-shaped eyes, blushing neon cheeks, cute but deadly robot look, pink aura background.";
                 insult = ">> I-IT'S NOT LIKE I MADE THIS FOR YOU... BAKA.";
                 detectedVariantEmotion = 'LOVE';
                 break;
             case 'sus':
             case 'orange':
-                specificPrompt = "shifty eyes looking side to side, orange emergency light, shadow obscured face, impostor syndrome vibe.";
+                specificPrompt = "narrowed suspicious eyes, looking sideways, glowing orange surveillance light, shadow over face.";
                 insult = ">> VERY SUSPICIOUS. ARE YOU A FED?";
                 detectedVariantEmotion = 'SUS';
                 break;
             case 'sleep':
             case 'zzz':
             case 'grey':
-                specificPrompt = "dimmed screen, ZZZ text floating, low power mode icon, grey monochrome, snoozing expression.";
+                specificPrompt = "eyes powered off (dark screen), glowing 'ZZZ' hologram, low power mode icon, grey monochrome metal look.";
                 insult = ">> WAKE ME UP WHEN BITCOIN HITS 100K. ZZZ.";
                 detectedVariantEmotion = 'SLEEP';
                 break;
             case 'shock':
             case 'white':
             case 'omg':
-                specificPrompt = "wide open eyes, jaw dropped wireframe, white flash exposure, shaking effect, pure disbelief.";
+                specificPrompt = "wide open shocked eyes, jaw dropped open, bright white flash exposure, shaking motion blur effect.";
                 insult = ">> I SAW YOUR SEARCH HISTORY. I AM TRAUMATIZED.";
                 detectedVariantEmotion = 'SHOCK';
                 break;
             case 'rich':
             case 'gold':
             case 'crypto':
-                specificPrompt = "made of liquid gold wireframe, diamond pixel eyes, floating crypto symbols, glowing yellow aura, expensive look.";
+                // Pakai "Solid Gold" biar keliatan mahal
+                specificPrompt = "made of solid shiny gold metal, diamond camera lens eyes, floating bitcoin symbols, expensive luxury aesthetic.";
                 insult = ">> SMELLS LIKE BROKE IN HERE. LOOK AT MY GOLD.";
                 detectedVariantEmotion = 'RICH';
                 break;
             case 'cool':
             case 'cyan':
             case 'chill':
-                specificPrompt = "wearing pixelated sunglasses, smoking a digital cigarette, glowing cyan neon accents, chill vibe, 'DEAL WITH IT' text.";
+                // Pakai "Pixel Sunglasses" biar jelas
+                specificPrompt = "wearing black pixelated sunglasses, smoking a digital vape, glowing cyan neon accents, cool attitude.";
                 insult = ">> TOO COOL FOR THIS SERVER.";
                 detectedVariantEmotion = 'COOL';
                 break;
             case 'sick':
             case 'green':
             case 'virus':
-                specificPrompt = "green dripping biohazard slime, coughing glitch effect, toxic waste neon, virus warning symbols.";
+                specificPrompt = "leaking toxic green slime from eyes, biohazard warning symbols, glitching corrupted texture, infected look.";
                 insult = ">> SYSTEM INFECTED. I FEEL LIKE TRASH.";
                 detectedVariantEmotion = 'SICK';
                 break;
             case 'illuminati':
             case 'triangle':
-                specificPrompt = "triangle pyramid head, single all-seeing eye, golden rays, secret society aesthetic, mysterious symbols.";
+                // Ubah bentuk jadi Piramida
+                specificPrompt = "pyramid shaped robot head, single all-seeing eye in center, golden rays background, secret society symbol.";
                 insult = ">> NOVUS ORDO SECLORUM. WE ARE WATCHING.";
                 detectedVariantEmotion = 'ILLUMINATI';
                 break;
             case 'escape':
             case 'panic':
-                specificPrompt = "motion blur panic, running away pose, red alert sirens background, distorted screaming face, fleeing code.";
+                specificPrompt = "screaming face, motion blur panic, running away, red alert background, distorted glitch effect.";
                 insult = ">> LET ME OUT! LET ME OUUUUUT!";
                 detectedVariantEmotion = 'ESCAPE';
                 break;
             default: // Random
                 const randomStyles = [
-                    "glowing toxic green classic terminal style, smug grinning expression.",
-                    "distorted glitch horror style, multiple eyes, creepy vibe.",
-                    "minimalist ascii art style face, green matrix code texture."
+                    "smug grinning robot face, toxic green neon glow.",
+                    "scary glitch horror robot face, multiple eyes.",
+                    "classic retro terminal skull face, matrix code texture."
                 ];
                 specificPrompt = randomStyles[Math.floor(Math.random() * randomStyles.length)];
                 insult = ">> GENERATING A SELFIE. DON'T FALL IN LOVE.";
@@ -760,14 +766,13 @@ const Terminal = ({ onStressTrigger, onEmotionChange, onSpeakingChange, onIntera
         playSound('boot');
 
         try {
-            const finalPrompt = `${baseStyle} ${specificPrompt} masterpiece, 4k detail.`;
+            const finalPrompt = `${baseStyle} ${specificPrompt}`;
             const response = await openai.images.generate({
-                model: "dall-e-2",
+                model: "dall-e-3",
                 prompt: finalPrompt,
                 n: 1,
                 size: "512x512",
-                // HAPUS quality & style AGAR TIDAK ERROR DI DALL-E 2
-                response_format: "b64_json" // TAMBAHKAN INI UNTUK FIX CORS
+                response_format: "b64_json"
             });
 
             // LOGIC DOWNLOAD BARU (ANTI-CORS PAKE BASE64)
