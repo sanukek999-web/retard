@@ -766,8 +766,6 @@ const Terminal = ({ onStressTrigger, onEmotionChange, onSpeakingChange, onIntera
                 prompt: finalPrompt,
                 n: 1,
                 size: "512x512",
-                quality: "standard",
-                style: "vivid"
             });
 
             const imageUrl = response.data[0].url;
