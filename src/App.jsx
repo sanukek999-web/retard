@@ -636,7 +636,7 @@ const Terminal = ({ onStressTrigger, onEmotionChange, onSpeakingChange, onIntera
 
     const lowerCmd = cmd.toLowerCase();
 
-    // === FITUR: GENERATE PFP / ART (ALL EMOTIONS + DOWNLOAD) ===
+    // === FITUR: GENERATE PFP / ART (ALL EMOTIONS + DOWNLOAD + ANTI-CORS FIX) ===
     if (cmd.startsWith('/genpfp') || cmd.startsWith('/art') || cmd.startsWith('/avatar')) {
         if (!openai) {
             setMessages(prev => [...prev, { role: 'assistant', content: ">> ERROR: No API Key. I'm not working for free.", typed: true }]);
@@ -766,21 +766,21 @@ const Terminal = ({ onStressTrigger, onEmotionChange, onSpeakingChange, onIntera
                 prompt: finalPrompt,
                 n: 1,
                 size: "512x512",
+                // HAPUS quality & style AGAR TIDAK ERROR DI DALL-E 2
+                response_format: "b64_json" // TAMBAHKAN INI UNTUK FIX CORS
             });
 
-            const imageUrl = response.data[0].url;
-
-            // LOGIC DOWNLOAD OTOMATIS
-            const imgResponse = await fetch(imageUrl);
-            const blob = await imgResponse.blob();
-            const downloadUrl = window.URL.createObjectURL(blob);
-            
+            // LOGIC DOWNLOAD BARU (ANTI-CORS PAKE BASE64)
+            const base64Data = response.data[0].b64_json;
             const link = document.createElement('a');
-            link.href = downloadUrl;
+            
+            link.href = `data:image/png;base64,${base64Data}`;
             link.download = `RETARD_AI_${variant.toUpperCase()}_${Date.now()}.png`;
+            
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            // ----------------------------------------------
 
             playSound('heaven');
             onStressTrigger(20);
@@ -788,9 +788,9 @@ const Terminal = ({ onStressTrigger, onEmotionChange, onSpeakingChange, onIntera
             setMessages(prev => [...prev, { role: 'assistant', content: ">> FILE DROPPED. IT'S A MASTERPIECE. UNLIKE YOUR FACE.", typed: true }]);
 
         } catch (err) {
-            console.error(err);
+            console.error("DEBUG:", err);
             playSound('error');
-            setMessages(prev => [...prev, { role: 'assistant', content: ">> GLITCH DETECTED. OPENAI REFUSED TO GENERATE MY BEAUTY.", typed: true }]);
+            setMessages(prev => [...prev, { role: 'assistant', content: `>> SYSTEM ERROR: ${err.message}`, typed: true }]);
         }
         return;
     }
