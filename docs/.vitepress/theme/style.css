@@ -1,40 +1,38 @@
 /**
- * RETARD_CLI DOCS THEME
- * Base: Hacker Terminal Style
+ 
  */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  /* --- WARNA DASAR (Palette dari App.jsx) --- */
+  /* --- (Palette  App.jsx) --- */
   --vp-c-bg: #000000 !important;
   --vp-c-bg-alt: #050505 !important;
   --vp-c-bg-soft: #0a0a0a !important;
 
-  /* TEXT HIJAU TERMINAL */
+  
   --vp-c-text-1: #22c55e !important; /* Green-500 */
   --vp-c-text-2: #15803d !important; /* Green-700 (Dimmed) */
   --vp-c-text-3: #14532d !important;
   
-  /* BRAND COLORS (Link & Tombol) */
+ 
   --vp-c-brand-1: #22c55e !important;
-  --vp-c-brand-2: #4ade80 !important; /* Green-400 */
+  --vp-c-brand-2: #4ade80 !important; 
   --vp-c-brand-3: #16a34a !important;
   
-  /* BORDER & DIVIDER (Hijau Tipis) */
+
   --vp-c-border: rgba(34, 197, 94, 0.3) !important;
   --vp-c-divider: rgba(34, 197, 94, 0.2) !important;
   
-  /* FONT */
+
   --vp-font-family-base: "JetBrains Mono", "Courier New", monospace !important;
   --vp-font-family-mono: "JetBrains Mono", "Courier New", monospace !important;
 
-  /* NAVIGATION BAR */
+ 
   --vp-nav-bg-color: rgba(0, 0, 0, 0.9) !important;
   --vp-sidebar-bg-color: rgba(0, 0, 0, 0.95) !important;
 }
 
-/* --- BACKGROUND EFEK CRT (Persis App.jsx) --- */
 body {
   background-color: #000 !important;
   background-image: 
@@ -43,22 +41,22 @@ body {
   background-size: 100% 2px, 3px 100%;
 }
 
-/* --- TEXT GLOW EFFECT --- */
+
 h1, h2, h3, .VPNavBarTitle {
   text-shadow: 0 0 5px rgba(34, 197, 94, 0.6);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-/* --- SIDEBAR & NAV BORDER --- */
+
 .VPNav, .VPSidebar {
   border-bottom: 1px solid var(--vp-c-border) !important;
   border-right: 1px solid var(--vp-c-border) !important;
 }
 
-/* --- TOMBOL (KOTAK ALA TERMINAL) --- */
+
 .VPButton {
-  border-radius: 0 !important; /* Gak boleh tumpul */
+  border-radius: 0 !important; 
   border: 1px solid var(--vp-c-brand-1) !important;
   background-color: transparent !important;
   color: var(--vp-c-brand-1) !important;
@@ -71,19 +69,17 @@ h1, h2, h3, .VPNavBarTitle {
   box-shadow: 0 0 15px var(--vp-c-brand-1);
 }
 
-/* --- CODE BLOCKS (HITAM PEKAT) --- */
+
 .vp-doc div[class*='language-'] {
   border-radius: 0 !important;
   border: 1px solid var(--vp-c-border) !important;
   background-color: #050505 !important;
 }
 
-/* --- HILANGIN FITUR LIGHT MODE --- */
 .VPSwitch {
   display: none !important;
 }
 
-/* --- SCROLLBAR TERMINAL --- */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -98,7 +94,7 @@ h1, h2, h3, .VPNavBarTitle {
   background: #4ade80; 
 }
 
-/* --- DOCUMENT CONTENT OVERRIDES --- */
+
 .vp-doc p, .vp-doc li {
     font-size: 15px;
     line-height: 1.6;

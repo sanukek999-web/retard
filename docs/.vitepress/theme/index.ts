@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
-import './style.css' // <--- WAJIB ADA
+import './style.css' // 
 
 export default {
   extends: DefaultTheme
